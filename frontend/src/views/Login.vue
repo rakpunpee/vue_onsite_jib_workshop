@@ -1,31 +1,27 @@
 <template>
-  <div>
-    {{ version }}
-    <button @click="add">Count: {{ count }}</button>
-    <div @click="clear">{{ user }}</div>
-  </div>
+  <div>Hey</div>
 </template>
 
 <script lang="ts">
-import { ref, reactive } from "vue";
+import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
+import { defineComponent, reactive, computed } from "vue";
+import type { UnwrapRef } from "vue";
+import type { FormProps } from "ant-design-vue";
+// import type { User } from "@/models/user.model";
+// import { useAppStore } from "@/store/useAppStore";
+interface FormState {
+  username: string;
+  password: string;
+}
 
 export default {
+  components: {
+    UserOutlined,
+    LockOutlined,
+  },
+
   setup() {
-    // let count = 0;
-    const count = ref<number>(0);
-    const user = reactive<any>({ username: "admin", password: "1234" });
-
-    const clear = () => {
-      user.username = "";
-      user.password = "";
-    };
-
-    const add = () => {
-      count.value = count.value + 1;
-      console.log("count: " + count.value.toString());
-    };
-
-    return { count, user, add, clear, version: import.meta.env.VITE_VERSION };
+    return {};
   },
 };
 </script>
