@@ -50,7 +50,7 @@
               block
               type="default"
               html-type="button"
-              @click="$router.push('/register')"
+              @click="handleRegister"
             >
               Register
             </a-button>
@@ -66,6 +66,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
 import { defineComponent, reactive, computed, ref } from "vue";
 import type { UnwrapRef } from "vue";
 import type { FormProps } from "ant-design-vue";
+import { useRouter } from "vue-router";
 // import type { User } from "@/models/user.model";
 // import { useAppStore } from "@/store/useAppStore";
 interface FormState {
@@ -81,16 +82,29 @@ export default {
 
   setup() {
     const isProd = import.meta.env.PROD;
+    const router = useRouter();
 
     const formState = reactive<FormState>({
       username: "admin",
       password: "1234",
     });
 
-    const handleFinish: FormProps["onFinish"] = () => {};
+    const handleRegister = () => {
+      router.push("/register");
+    };
+
+    const handleFinish: FormProps["onFinish"] = () => {
+      alert(JSON.stringify(formState));
+    };
     const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {};
 
-    return { isProd, formState, handleFinish, handleFinishFailed };
+    return {
+      isProd,
+      formState,
+      handleFinish,
+      handleFinishFailed,
+      handleRegister,
+    };
   },
 };
 </script>
