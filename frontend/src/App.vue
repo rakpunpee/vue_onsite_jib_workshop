@@ -1,33 +1,19 @@
 <template>
   <div>
-    <h1>JIB</h1>
-    <div>Tmp1: {{ tmp1 }}</div>
-    <div>Tmp2: {{ tmp2 }}</div>
-    <div>Tmp3: {{ tmp3 }}</div>
-    <button v-on:click="handle1">Click1</button>
-    <button @click="handle1">Click1</button>
+    <Header />
+    <Menu />
     <Login />
-    <register />
   </div>
 </template>
 
 <script lang="ts">
-import Login from "./views/Login.vue";
-import Register from "@/views/Register.vue";
+import Header from "@/components/core/Header.vue";
+import Menu from "@/components/core/Menu.vue";
+import Login from "@/views/Login.vue";
 
 export default {
-  components: { Login, Register },
-  setup() {
-    const tmp1 = "lek";
-    const tmp2 = 1;
-    const tmp3 = true;
-
-    function handle1() {
-      alert("Hey1");
-    }
-
-    return { tmp1, tmp2, tmp3, handle1 };
-  },
+  components: { Header, Menu, Login },
+  setup() {},
 };
 </script>
 
