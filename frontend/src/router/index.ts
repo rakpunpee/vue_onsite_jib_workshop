@@ -20,6 +20,42 @@ const routes: Array<vueRouter.RouteRecordRaw> = [
     component: Register,
   },
   {
+    path: "/stock",
+    meta: { isSecured: true },
+    name: "stock",
+    component: Stock,
+  },
+  {
+    path: "/stock-create",
+    meta: { isSecured: true },
+    name: "stock-create",
+    component: StockCreate,
+  },
+  {
+    path: "/stock-edit/:id",
+    meta: { isSecured: true },
+    name: "stock-edit",
+    component: StockEdit,
+  },
+  {
+    path: "/shop",
+    meta: { isSecured: true },
+    name: "shop",
+    component: Shop,
+  },
+  {
+    path: "/report",
+    meta: { isSecured: true },
+    name: "report",
+    component: Report,
+  },
+  {
+    path: "/transaction",
+    meta: { isSecured: true },
+    name: "transaction",
+    component: Transaction,
+  },
+  {
     path: "/",
     redirect: "/login",
   },
