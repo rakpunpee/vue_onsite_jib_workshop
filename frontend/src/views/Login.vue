@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="add">Count: {{ count }}</button>
-    <div>{{ user }}</div>
+    <div @click="clear">{{ user }}</div>
   </div>
 </template>
 
