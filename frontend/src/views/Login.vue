@@ -1,21 +1,63 @@
 <template>
   <div>
-    <a-form>
-      <a-input
-        type="text"
-        placeholder="Username"
-        v-model:value="user.username"
-      /><br />
-      <a-input
-        type="text"
-        placeholder="Password"
-        v-model:value="user.password"
-      /><br />
-      <span>Debug: {{ user }}</span>
-      <br />
-      <button type="submit">Submit</button>
-      <button type="button" @click="handleClear">Clear</button>
-    </a-form>
+    <a-card
+      hoverable
+      style="
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px;
+        width: 300px;
+        height: 500px;
+      "
+    >
+      <template #cover>
+        <img alt="example" src="@/assets/03-vuejs-login.png" />
+      </template>
+
+      <h1 className="text-2xl font-bold pb-3">
+        Login {{ isProd ? "PRO" : "Dev" }}
+      </h1>
+
+      <a-form
+        layout="vertical"
+        :model="formState"
+        @finish="handleFinish"
+        @finishFailed="handleFinishFailed"
+      >
+        <a-form-item>
+          <a-input v-model:value="formState.username" placeholder="Username">
+            <template #prefix
+              ><UserOutlined style="color: rgba(0, 0, 0, 0.25)"
+            /></template>
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-input
+            v-model:value="formState.password"
+            type="password"
+            placeholder="Password"
+          >
+            <template #prefix
+              ><LockOutlined style="color: rgba(0, 0, 0, 0.25)"
+            /></template>
+          </a-input>
+        </a-form-item>
+        <a-form-item>
+          <a-space direction="vertical" style="width: 100%" size="small">
+            <a-button block type="primary" html-type="submit">
+              Log in
+            </a-button>
+
+            <a-button
+              block
+              type="default"
+              html-type="button"
+              @click="$router.push('/register')"
+            >
+              Register
+            </a-button>
+          </a-space>
+        </a-form-item>
+      </a-form>
+    </a-card>
   </div>
 </template>
 
