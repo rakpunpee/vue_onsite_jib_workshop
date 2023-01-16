@@ -1,4 +1,4 @@
-<template>Login</template>
+<template>Payment</template>
 
 <script lang="ts">
 export default {};
