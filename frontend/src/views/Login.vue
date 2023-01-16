@@ -80,6 +80,8 @@ export default {
   },
 
   setup() {
+    const isProd = import.meta.env.PROD;
+
     const user = reactive<FormState>({
       username: "admin",
       password: "1234",
@@ -92,7 +94,7 @@ export default {
       user.password = "";
     };
 
-    return { user, handleClear, username };
+    return { isProd };
   },
 };
 </script>
