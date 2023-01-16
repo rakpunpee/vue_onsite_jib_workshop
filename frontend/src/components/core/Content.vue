@@ -1,7 +1,13 @@
-<template>Header</template>
+<template>
+  <div>
+    <router-view />
+  </div>
+</template>
 
 <script lang="ts">
-export default {};
-</script>
+import { defineComponent } from "vue";
 
-<style></style>
+export default defineComponent({
+  components: {},
+});
+</script>
