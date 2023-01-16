@@ -10,7 +10,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         modifyVars: {
-          "primary-color": "#1DA57A",
+          "primary-color": "#FFA57A",
           "link-color": "#1DA57A",
           "border-radius-base": "10px",
           "table-row-hover-bg": "#1DA57A11",
