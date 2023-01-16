@@ -2,9 +2,9 @@
   <div>
     <form>
       <input type="text" placeholder="Username" :value="user.username" /><br />
-      <input type="text" placeholder="Password" /><br />
-      <button>Submit</button>
-      <button>Clear</button>
+      <input type="text" placeholder="Password" :value="user.password" /><br />
+      <button type="submit">Submit</button>
+      <button type="button" @click="handleClear">Clear</button>
     </form>
   </div>
 </template>
@@ -33,7 +33,12 @@ export default {
       password: "1234",
     });
 
-    return { user };
+    const handleClear = () => {
+      user.username = "";
+      user.password = "";
+    };
+
+    return { user, handleClear };
   },
 };
 </script>
