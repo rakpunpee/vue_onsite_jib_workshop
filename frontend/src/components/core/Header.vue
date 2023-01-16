@@ -1,4 +1,6 @@
-<template>Header</template>
+<template>
+  <div>Header</div>
+</template>
 
 <script lang="ts">
 export default {};

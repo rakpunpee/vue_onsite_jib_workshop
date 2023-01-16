@@ -5,9 +5,13 @@
 
 ## vuejs
 
+```
 yarn add ant-design-vue @ant-design/icons-vue axios less chart.js@3.9.1 @j-t-mcc/vue3-chartjs chartjs-plugin-datalabels chartjs-plugin-zoom url-join @types/url-join dayjs numeral vuex pinia vue-router
+```
 
+```
 yarn add --dev @types/node
+```
 
 ## tailwind
 
