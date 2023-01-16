@@ -7,14 +7,16 @@
     <button v-on:click="handle1">Click1</button>
     <button @click="handle1">Click1</button>
     <Login />
+    <register />
   </div>
 </template>
 
 <script lang="ts">
 import Login from "./views/Login.vue";
+import Register from "@/views/Register.vue";
 
 export default {
-  components: { Login },
+  components: { Login, Register },
   setup() {
     const tmp1 = "lek";
     const tmp2 = 1;
