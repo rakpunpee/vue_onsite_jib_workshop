@@ -82,19 +82,15 @@ export default {
   setup() {
     const isProd = import.meta.env.PROD;
 
-    const user = reactive<FormState>({
+    const formState = reactive<FormState>({
       username: "admin",
       password: "1234",
     });
 
-    const username = ref("");
+    const handleFinish: FormProps["onFinish"] = () => {};
+    const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {};
 
-    const handleClear = () => {
-      user.username = "";
-      user.password = "";
-    };
-
-    return { isProd };
+    return { isProd, formState, handleFinish, handleFinishFailed };
   },
 };
 </script>
