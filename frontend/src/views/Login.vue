@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ version }}
     <button @click="add">Count: {{ count }}</button>
     <div @click="clear">{{ user }}</div>
   </div>
@@ -24,7 +25,7 @@ export default {
       console.log("count: " + count.value.toString());
     };
 
-    return { count, user, add, clear };
+    return { count, user, add, clear, version: import.meta.env.VITE_VERSION };
   },
 };
 </script>
