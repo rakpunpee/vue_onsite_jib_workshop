@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <button>Count: {{ count }}</button>
+  </div>
 </template>
 
 <script lang="ts">
