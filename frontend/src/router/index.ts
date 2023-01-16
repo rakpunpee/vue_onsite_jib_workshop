@@ -8,7 +8,18 @@ import Shop from "@/views/Shop.vue";
 import Transaction from "@/views/Transaction.vue";
 import Report from "@/views/Report.vue";
 
-const routes: Array<vueRouter.RouteRecordRaw> = [];
+const routes: Array<vueRouter.RouteRecordRaw> = [
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: Register,
+  },
+];
 
 const router = vueRouter.createRouter({
   history: vueRouter.createWebHistory(import.meta.env.BASE_URL),
