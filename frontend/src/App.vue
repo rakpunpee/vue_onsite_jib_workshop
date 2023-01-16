@@ -2,7 +2,7 @@
   <div>
     <Header />
     <Menu />
-    <Login />
+    <RouterView />
   </div>
 </template>
 
