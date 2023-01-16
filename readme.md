@@ -6,6 +6,9 @@
 
 - https://chrome.google.com/webstore/detail/octotree-github-code-tree/bkhaagjahfmjljalopjnoealnfndnagc
 
-
 # new project vuejs
-- 
+
+- https://www.youtube.com/watch?v=0dHYX5z8ha0
+- yarn create vite
+- then: vuejs, typescript
+- cd <project_folder> && yarn dev
