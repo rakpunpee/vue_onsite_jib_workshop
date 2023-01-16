@@ -1,19 +1,29 @@
 <template>
   <div>
-    <button>Count: {{ count }}</button>
+    <button @click="add">Count: {{ count }}</button>
   </div>
 </template>
 
 <script lang="ts">
+import { ref, reactive } from "vue";
+
 export default {
   setup() {
-    let count = 0;
+    // let count = 0;
+    const count = ref<number>(0);
+    const user = reactive<any>({ username: "admin", password: "1234" });
 
-    const add = () => {
-      count = count + 1;
+    const clear = () => {
+      user.username = "";
+      user.password = "";
     };
 
-    return { count, add };
+    const add = () => {
+      count.value = count.value + 1;
+      console.log("count: " + count.value.toString());
+    };
+
+    return { count, add, clear };
   },
 };
 </script>
