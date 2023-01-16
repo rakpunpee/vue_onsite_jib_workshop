@@ -4,12 +4,12 @@
       <a-input
         type="text"
         placeholder="Username"
-        :value="user.username"
+        v-model:value="user.username"
       /><br />
       <a-input
         type="text"
         placeholder="Password"
-        :value="user.password"
+        v-model:value="user.password"
       /><br />
       <span>Debug: {{ user }}</span>
       <br />
