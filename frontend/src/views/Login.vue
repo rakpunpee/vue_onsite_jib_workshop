@@ -1,7 +1,7 @@
 <template>
   <div>
     <form>
-      <input type="text" placeholder="Username" /><br />
+      <input type="text" placeholder="Username" :value="user.username" /><br />
       <input type="text" placeholder="Password" /><br />
       <button>Submit</button>
       <button>Clear</button>
@@ -28,7 +28,12 @@ export default {
   },
 
   setup() {
-    return {};
+    const user = reactive<any>({
+      username: "admin",
+      password: "1234",
+    });
+
+    return { user };
   },
 };
 </script>
