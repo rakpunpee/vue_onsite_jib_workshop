@@ -1,6 +1,7 @@
 <template>
   <div>
     <button @click="add">Count: {{ count }}</button>
+    <div>{{ user }}</div>
   </div>
 </template>
 
@@ -23,7 +24,7 @@ export default {
       console.log("count: " + count.value.toString());
     };
 
-    return { count, add, clear };
+    return { count, user, add, clear };
   },
 };
 </script>
