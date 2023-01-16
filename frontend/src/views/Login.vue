@@ -77,7 +77,11 @@
 </template>
 
 <script lang="ts">
-export default {};
+import { SearchOutlined } from "@ant-design/icons-vue";
+
+export default {
+  components: { SearchOutlined },
+};
 </script>
 
 <style></style>
