@@ -3,6 +3,8 @@
     <form>
       <input type="text" placeholder="Username" :value="user.username" /><br />
       <input type="text" placeholder="Password" :value="user.password" /><br />
+      <span>Debug: {{ user }}</span>
+      <br />
       <button type="submit">Submit</button>
       <button type="button" @click="handleClear">Clear</button>
     </form>
