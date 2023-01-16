@@ -6,11 +6,15 @@
     <div>Tmp3: {{ tmp3 }}</div>
     <button v-on:click="handle1">Click1</button>
     <button @click="handle1">Click1</button>
+    <Login />
   </div>
 </template>
 
 <script lang="ts">
+import Login from "./views/Login.vue";
+
 export default {
+  components: { Login },
   setup() {
     const tmp1 = "lek";
     const tmp2 = 1;
