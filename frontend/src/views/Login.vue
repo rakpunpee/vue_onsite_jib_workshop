@@ -1,5 +1,12 @@
 <template>
-  <div>Hey</div>
+  <div>
+    <form>
+      <input type="text" placeholder="Username" /><br />
+      <input type="text" placeholder="Password" /><br />
+      <button>Submit</button>
+      <button>Clear</button>
+    </form>
+  </div>
 </template>
 
 <script lang="ts">
