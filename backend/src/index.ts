@@ -8,6 +8,9 @@ AppDataSource.initialize()
     // create express app
     const app = express();
     app.use(express.json());
+    app.use(cors());
+    const rootPath = process.env.ROOT_PATH ? process.env.ROOT_PATH : __dirname;
+    app.use(express.static(rootPath + "/uploaded"));
 
     // app.get("/user", (req, res)=>{
     // res.json([1,2,2])
