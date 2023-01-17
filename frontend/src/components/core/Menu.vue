@@ -7,7 +7,8 @@
     @breakpoint="onBreakpoint"
   >
     <div
-      style="height: 32px; background: rgba(255, 255, 255, 0.2); margin: 16px"
+      @click="handleClickMenu"
+      style="height: 32px; background: rgba(255, 0, 0, 1); margin: 16px"
     />
     <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
       <a-menu-item key="1">
@@ -38,6 +39,7 @@ import {
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   props: ["collapsed"],
+  emits: ["update:collapsed"],
   components: {
     UserOutlined,
     VideoCameraOutlined,
@@ -48,6 +50,10 @@ export default defineComponent({
       console.log(collapsed, type);
     };
 
+    const handleClickMenu = () => {
+      
+    };
+
     const onBreakpoint = (broken: boolean) => {
       console.log(broken);
     };
@@ -56,6 +62,7 @@ export default defineComponent({
       selectedKeys: ref<string[]>(["4"]),
       onCollapse,
       onBreakpoint,
+      handleClickMenu,
     };
   },
 });
