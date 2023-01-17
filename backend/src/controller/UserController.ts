@@ -23,11 +23,11 @@ export class UserController {
       const token = "1234";
 
       if (isPasswordValid) {
-        res.json({ result: "ok", token, message: "success" });
+        return { result: "ok", token, message: "success" };
       }
     }
 
-    return res.json({ result: "nok", message: "failed" });
+    return { result: "nok", message: "failed" };
   }
 
   async register(req: Request, res: Response, next: NextFunction) {

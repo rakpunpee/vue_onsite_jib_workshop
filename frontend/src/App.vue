@@ -16,7 +16,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import Header from "./components/core/Header.vue";
 import Menu from "./components/core/Menu.vue";
 import Content from "./components/core/Content.vue";
-// import { useAppStore } from "./store/useAppStore";
+import { useAppStore } from "./stores/useAppStore";
 export default defineComponent({
   components: {
     Header,
@@ -25,7 +25,7 @@ export default defineComponent({
   },
   setup() {
     const collapsed = ref<boolean>(false);
-    // const store = useAppStore();
+    const store = useAppStore();
 
     onMounted(() => {
       // store.restoreLogin();
@@ -33,7 +33,7 @@ export default defineComponent({
 
     return {
       collapsed,
-      // store,
+      store,
     };
   },
 });
