@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { User } from "./entity/User";
+import { Users } from "./entity/Users";
 
 export const AppDataSource = new DataSource({
   type: "mongodb",
@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   port: process.env.MONGO_PORT ? Number(process.env.MONGO_PORT) : 27018,
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [Users],
   migrations: [],
   subscribers: [],
 });

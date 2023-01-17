@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
-import { User } from "../entity/User";
+import { Users } from "../entity/Users";
 
 export class UserController {
   private userRepository = AppDataSource.getMongoRepository(User);
