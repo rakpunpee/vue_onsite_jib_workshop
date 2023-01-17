@@ -54,6 +54,15 @@
             >
               Register
             </a-button>
+
+            <a-button
+              block
+              type="default"
+              html-type="button"
+              @click="store.add"
+            >
+              Count: {{ store.count }}
+            </a-button>
           </a-space>
         </a-form-item>
       </a-form>
