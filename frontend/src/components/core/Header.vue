@@ -16,8 +16,9 @@
         @click="toggleCollapse"
       />
       <span
+        @click="store.remove"
         style="font-size: 25px; color: white; flex-grow: 1; margin-left: 16px"
-        >Vue3 / NodeJS / Express / Mongo V.{{ version }}</span
+        >Vue3 / NodeJS / Express / Mongo V.{{ version }}:{{ store.count }}</span
       >
 
       <a-button type="text" @click.prevent="onClickLogOff()">
@@ -30,6 +31,7 @@
   </a-layout-header>
 </template>
 <script lang="ts">
+import { useCounterStore } from "@/stores/useCounterStore";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -46,6 +48,8 @@ export default defineComponent({
     LogoutOutlined,
   },
   setup(props, { emit }) {
+    const store = useCounterStore();
+
     function toggleCollapse() {
       emit("update:collapsed", !props.collapsed);
     }
@@ -55,7 +59,7 @@ export default defineComponent({
     }
 
     return {
-      // store,
+      store,
       toggleCollapse,
       onClickLogOff,
       version: import.meta.env.VITE_VERSION,
