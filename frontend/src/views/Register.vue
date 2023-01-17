@@ -61,6 +61,8 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
 import { defineComponent, reactive } from "vue";
 import type { UnwrapRef } from "vue";
 import type { FormProps } from "ant-design-vue";
+import axios from "axios";
+
 // import api from "@/services/api";
 // import type { User } from "@/models/user.model";
 
@@ -78,9 +80,16 @@ export default defineComponent({
       username: "",
       password: "",
     });
+    
     const handleFinish: FormProps["onFinish"] = async () => {
       //   await api.register(formState);
-      alert(JSON.stringify(formState));
+      // alert(JSON.stringify(formState));
+      const result = await axios.post(
+        "http://localhost:8081/api/v2/register",
+        formState
+      );
+
+      alert(JSON.stringify(result));
     };
     const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {
       alert(JSON.stringify(errors));
