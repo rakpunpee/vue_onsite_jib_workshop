@@ -1,8 +1,8 @@
 <template>
   <a-layout style="width: 1000px; height: 100%">
-    <Menu :collapsed="false" />
+    <Menu :collapsed="collapsed" />
     <a-layout>
-      <Header />
+      <Header @update="toggle" />
       <a-layout-content :style="{ margin: '24px 16px 0' }">
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
@@ -37,6 +37,12 @@ export default defineComponent({
     Content,
   },
   setup() {
+    const collapsed = ref(false);
+
+    const toggle = () => {
+      collapsed.value = !collapsed.value;
+    };
+
     const onCollapse = (collapsed: boolean, type: string) => {
       console.log(collapsed, type);
     };
@@ -49,6 +55,8 @@ export default defineComponent({
       selectedKeys: ref<string[]>(["4"]),
       onCollapse,
       onBreakpoint,
+      collapsed,
+      toggle,
     };
   },
 });

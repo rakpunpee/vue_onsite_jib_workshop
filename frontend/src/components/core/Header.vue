@@ -13,6 +13,7 @@ import { defineComponent, ref } from "vue";
 
 import Menu from "@/components/core/Menu.vue";
 export default defineComponent({
+  emits: ["update"],
   components: {
     UserOutlined,
     VideoCameraOutlined,
