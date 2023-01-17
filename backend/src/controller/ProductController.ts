@@ -1,11 +1,11 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
-import { Users } from "../entity/Users";
+import { Products } from "../entity/Products";
 
-export class UserController {
-  private userRepository = AppDataSource.getMongoRepository(Users);
+export class ProductController {
+  private ProductRepository = AppDataSource.getMongoRepository(Products);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.userRepository.find();
+    return this.ProductRepository.find();
   }
 }
