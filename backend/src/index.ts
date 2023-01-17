@@ -1,3 +1,4 @@
+import cors = require("cors");
 import * as express from "express";
 import { Request, Response } from "express";
 import { AppDataSource } from "./data-source";
@@ -10,6 +11,7 @@ AppDataSource.initialize()
     app.use(express.json());
     app.use(cors());
     const rootPath = process.env.ROOT_PATH ? process.env.ROOT_PATH : __dirname;
+    console.log(rootPath);
     app.use(express.static(rootPath + "/uploaded"));
 
     // app.get("/user", (req, res)=>{
