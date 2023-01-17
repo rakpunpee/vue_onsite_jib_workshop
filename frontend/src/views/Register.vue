@@ -62,6 +62,7 @@ import { defineComponent, reactive } from "vue";
 import type { UnwrapRef } from "vue";
 import type { FormProps } from "ant-design-vue";
 import httpClient from "@/services/httpClient";
+import api from "@/services/api";
 
 // import api from "@/services/api";
 // import type { User } from "@/models/user.model";
@@ -82,14 +83,7 @@ export default defineComponent({
     });
 
     const handleFinish: FormProps["onFinish"] = async () => {
-      //   await api.register(formState);
-      // alert(JSON.stringify(formState));
-      const result = await httpClient.post(
-        "http://localhost:8081/api/v2/register",
-        formState
-      );
-
-      alert(JSON.stringify(result));
+      await api.register(formState);
     };
     const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {
       alert(JSON.stringify(errors));
