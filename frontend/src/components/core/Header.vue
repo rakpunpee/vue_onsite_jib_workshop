@@ -1,64 +1,88 @@
+/* eslint-disable no-debugger, no-console */
+
 <template>
-  <a-layout-header :style="{ background: '#fff', padding: 0 }">
-    <upload-outlined @click="handleUpdate" />
+  <a-layout-header style="background: #00a354">
+    <div style="display: flex; flex-direction: row; align-items: center">
+      <menu-unfold-outlined
+        v-if="collapsed"
+        class="trigger"
+        style="color: white"
+        @click="toggleCollapse"
+      />
+      <menu-fold-outlined
+        v-else
+        class="trigger"
+        style="color: white"
+        @click="toggleCollapse"
+      />
+      <span
+        style="font-size: 25px; color: white; flex-grow: 1; margin-left: 16px"
+        >Vue3 / NodeJS / Express / Mongo V.{{ version }}</span
+      >
+
+      <a-button type="text" @click.prevent="onClickLogOff()">
+        <LogoutOutlined style="color: white; font-size: 20px" />
+        <span style="color: white; font-size: 20px; margin-left: 8px"
+          >Logout</span
+        >
+      </a-button>
+    </div>
   </a-layout-header>
 </template>
 <script lang="ts">
 import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
 
-import Menu from "@/components/core/Menu.vue";
 export default defineComponent({
-  emits: ["update"],
+  props: ["collapsed"],
+  emits: ["update:collapsed"],
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    Menu,
+    MenuUnfoldOutlined,
+    MenuFoldOutlined,
+    LogoutOutlined,
   },
   setup(props, { emit }) {
-    const onCollapse = (collapsed: boolean, type: string) => {
-      console.log(collapsed, type);
-    };
+    function toggleCollapse() {
+      emit("update:collapsed", !props.collapsed);
+    }
 
-    const handleUpdate = () => {
-      emit("update");
-    };
-
-    const onBreakpoint = (broken: boolean) => {
-      console.log(broken);
-    };
+    function onClickLogOff() {
+      // store.logout();
+    }
 
     return {
-      selectedKeys: ref<string[]>(["4"]),
-      onCollapse,
-      onBreakpoint,
-      handleUpdate,
+      // store,
+      toggleCollapse,
+      onClickLogOff,
+      version: import.meta.env.VITE_VERSION,
     };
   },
 });
 </script>
-
 <style>
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
 .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   margin: 16px;
 }
 
-.site-layout-sub-header-background {
+.site-layout .site-layout-background {
   background: #fff;
-}
-
-.site-layout-background {
-  background: #fff;
-}
-
-[data-theme="dark"] .site-layout-sub-header-background {
-  background: #141414;
 }
 </style>

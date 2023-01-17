@@ -1,89 +1,137 @@
 <template>
   <a-layout-sider
+    v-model:collapsed="collapsed"
     :width="270"
     :collapsedWidth="60"
     :trigger="null"
-    :collapsed="collapsed"
-    @breakpoint="onBreakpoint"
+    collapsible
+    style="
+      background: url(src/assets/bg-menu-2.png);
+      background-color: #213140 !important;
+      background-repeat: no-repeat;
+      background-size: cover;
+    "
   >
-    <div
-      @click="handleClickMenu"
-      style="height: 32px; background: rgba(255, 0, 0, 1); margin: 16px"
+    <img
+      @click="toggleCollapse"
+      :class="collapsed ? 'p-2' : 'p-0'"
+      :src="
+        collapsed
+          ? 'src/assets/pospos_logo.png'
+          : 'src/assets/05-banner-vuejs.png'
+      "
+      alt=""
+      style="width: 100%"
     />
-    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-      <a-menu-item key="1">
-        <user-outlined />
-        <span class="nav-text">nav 12</span>
+
+    <a-menu
+      v-model:selectedKeys="selectedKeys"
+      theme="dark"
+      mode="inline"
+      style="background-color: transparent"
+    >
+      <!-- Stock Menu -->
+      <a-menu-item key="1" @click="$router.push('/stock')">
+        <template #icon>
+          <CodepenOutlined style="color: white" />
+        </template>
+        <span>Stock</span>
       </a-menu-item>
-      <a-menu-item key="2">
-        <video-camera-outlined />
-        <span class="nav-text">nav 2</span>
+      <!-- Shop Menu -->
+      <a-menu-item key="2" @click="$router.push('/shop')">
+        <template #icon>
+          <ShoppingCartOutlined style="color: white" />
+        </template>
+        <span>Shop</span>
       </a-menu-item>
-      <a-menu-item key="3">
-        <upload-outlined />
-        <span class="nav-text">nav 3</span>
+      <!-- Report Menu -->
+      <a-menu-item key="3" @click="$router.push('/report')">
+        <template #icon>
+          <LineChartOutlined style="color: white" />
+        </template>
+        <span>Report</span>
       </a-menu-item>
-      <a-menu-item key="4">
-        <user-outlined />
-        <span class="nav-text">nav 4</span>
+      <!-- Transaction Menu -->
+      <a-menu-item key="4" @click="$router.push('/transaction')">
+        <template #icon>
+          <MoneyCollectOutlined style="color: white" />
+        </template>
+        <span>Transaction</span>
       </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
+
 <script lang="ts">
+import { defineComponent, ref, watchEffect, watch } from "vue";
 import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  CodepenOutlined,
+  ShoppingCartOutlined,
+  LineChartOutlined,
+  MoneyCollectOutlined,
 } from "@ant-design/icons-vue";
-import { defineComponent, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 export default defineComponent({
   props: ["collapsed"],
   emits: ["update:collapsed"],
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
+    CodepenOutlined,
+    ShoppingCartOutlined,
+    LineChartOutlined,
+    MoneyCollectOutlined,
   },
-  setup(props, { emit }) {
-    const onCollapse = (collapsed: boolean, type: string) => {
-      console.log(collapsed, type);
-    };
 
-    const handleClickMenu = () => {
+  setup(props, { emit }) {
+    const router = useRouter();
+    const route = useRoute();
+
+    watch(
+      () => route.path,
+      (path) => {
+        if (path.includes("stock")) {
+          selectedKeys.value = ["1"];
+        } else if (path.includes("shop")) {
+          selectedKeys.value = ["2"];
+        } else if (path.includes("report")) {
+          selectedKeys.value = ["3"];
+        } else if (path.includes("transaction")) {
+          selectedKeys.value = ["4"];
+        }
+      }
+    );
+
+    const selectedKeys = ref<string[]>(["0"]);
+    watchEffect(() => console.log(selectedKeys.value));
+
+    const toggleCollapse = () => {
       emit("update:collapsed", !props.collapsed);
     };
 
-    const onBreakpoint = (broken: boolean) => {
-      console.log(broken);
-    };
-
-    return {
-      selectedKeys: ref<string[]>(["4"]),
-      onCollapse,
-      onBreakpoint,
-      handleClickMenu,
-    };
+    return { selectedKeys, toggleCollapse };
   },
 });
 </script>
 
 <style>
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 0px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #e418ff;
+}
+
 .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   margin: 16px;
 }
 
-.site-layout-sub-header-background {
+.site-layout .site-layout-background {
   background: #fff;
-}
-
-.site-layout-background {
-  background: #fff;
-}
-
-[data-theme="dark"] .site-layout-sub-header-background {
-  background: #141414;
 }
 </style>
