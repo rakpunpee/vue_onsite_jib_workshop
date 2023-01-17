@@ -1,9 +1,22 @@
-# Run mongo on docker container
+# Run mongo on docker container (mac)
 
 ```
+export CURRENT_FOLDER="/Users/chaiyasittayabovorn/Desktop/Training/VueJS/vuejs-core/vuejs_mevn_stack_dist/workshops/vuestack_2023"
+
 docker run --name mongo-dev \
--v /Users/chaiyasittayabovorn/Desktop/Training/VueJS/vuejs-core/vuejs_mevn_stack_dist/workshops/vuestack_2023/mongo-dev/db:/data/db \
--v /Users/chaiyasittayabovorn/Desktop/Training/VueJS/vuejs-core/vuejs_mevn_stack_dist/workshops/vuestack_2023/data/dummy_db_cmpos:/script \
+-v $CURRENT_FOLDER/mongo-dev/db:/data/db \
+-v $CURRENT_FOLDER/data/dummy_db_cmpos:/script \
+-p 27018:27017 -d --rm mongo
+```
+
+# Run mongo on docker container (win)
+
+```
+set CURRENT_FOLDER="/Users/chaiyasittayabovorn/Desktop/Training/VueJS/vuejs-core/vuejs_mevn_stack_dist/workshops/vuestack_2023"
+
+docker run --name mongo-dev ^
+-v %CURRENT_FOLDER%/mongo-dev/db:/data/db ^
+-v %CURRENT_FOLDER%/data/dummy_db_cmpos:/script ^
 -p 27018:27017 -d --rm mongo
 ```
 
