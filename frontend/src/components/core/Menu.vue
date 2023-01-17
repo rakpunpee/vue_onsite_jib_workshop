@@ -45,13 +45,13 @@ export default defineComponent({
     VideoCameraOutlined,
     UploadOutlined,
   },
-  setup() {
+  setup(props, { emit }) {
     const onCollapse = (collapsed: boolean, type: string) => {
       console.log(collapsed, type);
     };
 
     const handleClickMenu = () => {
-      
+      emit("update:collapsed", !props.collapsed);
     };
 
     const onBreakpoint = (broken: boolean) => {

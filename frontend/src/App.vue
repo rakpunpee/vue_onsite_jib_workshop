@@ -1,6 +1,6 @@
 <template>
   <a-layout style="width: 1000px; height: 100%">
-    <Menu :collapsed="collapsed" />
+    <Menu v-model:collapsed="collapsed" />
     <a-layout>
       <Header @update="toggle" />
       <a-layout-content :style="{ margin: '24px 16px 0' }">
