@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col items-center overflow-y-auto h-[85vh]">
     <router-view />
   </div>
 </template>
