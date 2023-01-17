@@ -45,10 +45,10 @@ AppDataSource.initialize()
     // ...
 
     // start express server
-    app.listen(3000);
+    app.listen(8081);
 
     console.log(
-      "Express server has started on port 3000. Open http://localhost:3000/api/v2/products to see results"
+      "Express server has started on port 8081. Open http://localhost:8081/api/v2/products to see results"
     );
   })
   .catch((error) => console.log(error));

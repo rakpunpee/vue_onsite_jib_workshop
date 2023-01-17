@@ -11,6 +11,8 @@ export class UserController {
     return this.userRepository.find();
   }
 
+  async login(req: Request, res: Response, next: NextFunction) {}
+
   async register(req: Request, res: Response, next: NextFunction) {
     try {
       req.body.created = savedValue(req.body.created, new Date());
