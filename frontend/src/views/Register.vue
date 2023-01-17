@@ -61,7 +61,6 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
 import { defineComponent, reactive } from "vue";
 import type { UnwrapRef } from "vue";
 import type { FormProps } from "ant-design-vue";
-import httpClient from "@/services/httpClient";
 import api from "@/services/api";
 
 // import api from "@/services/api";
