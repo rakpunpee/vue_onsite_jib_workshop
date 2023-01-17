@@ -1,6 +1,8 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
 import { Users } from "../entity/Users";
+import { savedValue } from "../utils/cm-util";
+import * as bcrypt from "bcryptjs";
 
 export class UserController {
   private userRepository = AppDataSource.getMongoRepository(Users);
