@@ -16,7 +16,7 @@ AppDataSource.initialize()
     // register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
-        route.route,
+        "/api/v2" + route.route,
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
@@ -43,7 +43,7 @@ AppDataSource.initialize()
     app.listen(3000);
 
     console.log(
-      "Express server has started on port 3000. Open http://localhost:3000/users to see results"
+      "Express server has started on port 3000. Open http://localhost:3000/api/v2/products to see results"
     );
   })
   .catch((error) => console.log(error));
