@@ -1,6 +1,6 @@
 <template>
   <a-layout-header :style="{ background: '#fff', padding: 0 }">
-    <upload-outlined />
+    <upload-outlined @click="handleUpdate" />
   </a-layout-header>
 </template>
 <script lang="ts">
@@ -25,6 +25,8 @@ export default defineComponent({
       console.log(collapsed, type);
     };
 
+    const handleUpdate = () => {};
+
     const onBreakpoint = (broken: boolean) => {
       console.log(broken);
     };
@@ -33,6 +35,7 @@ export default defineComponent({
       selectedKeys: ref<string[]>(["4"]),
       onCollapse,
       onBreakpoint,
+      handleUpdate,
     };
   },
 });
