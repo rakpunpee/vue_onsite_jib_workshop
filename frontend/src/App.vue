@@ -7,7 +7,7 @@
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
         >
-          content
+          <Content />
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -24,6 +24,7 @@ import {
 } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
 
+import Content from "@/components/core/Content.vue";
 import Header from "@/components/core/Header.vue";
 import Menu from "@/components/core/Menu.vue";
 export default defineComponent({
@@ -33,6 +34,7 @@ export default defineComponent({
     UploadOutlined,
     Menu,
     Header,
+    Content,
   },
   setup() {
     const onCollapse = (collapsed: boolean, type: string) => {
