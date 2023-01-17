@@ -1,6 +1,6 @@
 <template>
   <a-layout style="width: 1000px; height: 100%">
-    <Menu />
+    <Menu :collapsed="false" />
     <a-layout>
       <Header />
       <a-layout-content :style="{ margin: '24px 16px 0' }">

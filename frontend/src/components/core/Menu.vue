@@ -3,7 +3,7 @@
     :width="270"
     :collapsedWidth="60"
     :trigger="null"
-    :collapsed="false"
+    :collapsed="collapsed"
     @breakpoint="onBreakpoint"
   >
     <div
@@ -37,6 +37,7 @@ import {
 } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent({
+  props: ["collapsed"],
   components: {
     UserOutlined,
     VideoCameraOutlined,
