@@ -54,15 +54,6 @@
             >
               Register
             </a-button>
-
-            <a-button
-              block
-              type="default"
-              html-type="button"
-              @click="store.add"
-            >
-              Count: {{ store.count }}
-            </a-button>
           </a-space>
         </a-form-item>
       </a-form>
@@ -78,7 +69,7 @@ import type { FormProps } from "ant-design-vue";
 import { useRouter } from "vue-router";
 import { useCounterStore } from "@/stores/useCounterStore";
 // import type { User } from "@/models/user.model";
-// import { useAppStore } from "@/store/useAppStore";
+import { useAppStore } from "@/stores/useAppStore";
 interface FormState {
   username: string;
   password: string;
@@ -93,7 +84,7 @@ export default {
   setup() {
     const isProd = import.meta.env.PROD;
     const router = useRouter();
-    const store = useCounterStore();
+    const store = useAppStore();
 
     const formState = reactive<FormState>({
       username: "admin",
@@ -105,7 +96,7 @@ export default {
     };
 
     const handleFinish: FormProps["onFinish"] = () => {
-      alert(JSON.stringify(formState));
+      store.login(formState);
     };
     const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {};
 

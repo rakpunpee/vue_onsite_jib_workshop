@@ -1,10 +1,10 @@
 /* eslint-disable */
 <template>
   <a-layout style="height: 100%">
-    <Menu v-model:collapsed="collapsed" />
+    <Menu v-if="store.isLogged" v-model:collapsed="collapsed" />
 
     <a-layout>
-      <Header v-model:collapsed="collapsed" />
+      <Header v-if="store.isLogged" v-model:collapsed="collapsed" />
       <a-layout-content class="m-8">
         <Content />
       </a-layout-content>
