@@ -78,8 +78,9 @@ export default defineComponent({
       username: "",
       password: "",
     });
-    const handleFinish: FormProps["onFinish"] = async (values) => {
+    const handleFinish: FormProps["onFinish"] = async () => {
       //   await api.register(formState);
+      alert(JSON.stringify(formState));
     };
     const handleFinishFailed: FormProps["onFinishFailed"] = (errors) => {
       alert(JSON.stringify(errors));
