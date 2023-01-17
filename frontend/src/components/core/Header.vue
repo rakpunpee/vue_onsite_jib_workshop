@@ -20,12 +20,14 @@ export default defineComponent({
     UploadOutlined,
     Menu,
   },
-  setup() {
+  setup(props, { emit }) {
     const onCollapse = (collapsed: boolean, type: string) => {
       console.log(collapsed, type);
     };
 
-    const handleUpdate = () => {};
+    const handleUpdate = () => {
+      emit("update");
+    };
 
     const onBreakpoint = (broken: boolean) => {
       console.log(broken);
