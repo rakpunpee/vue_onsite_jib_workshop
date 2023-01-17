@@ -10,7 +10,12 @@ export function savedValue(value: any, _default: any): any {
 
 export async function deleteFile(name: string) {
   if (name) {
-    const toDeletedFiles = fs.readdirSync(uploadPath).filter((allFilesPaths: string) => allFilesPaths.match(new RegExp(`(${name})+(.*)$`, "i")) !== null);
+    const toDeletedFiles = fs
+      .readdirSync(uploadPath)
+      .filter(
+        (allFilesPaths: string) =>
+          allFilesPaths.match(new RegExp(`(${name})+(.*)$`, "i")) !== null
+      );
 
     toDeletedFiles.forEach(async (file) => {
       // console.log(file);
@@ -43,6 +48,10 @@ export async function uploadImage(files: any, name: string) {
 
 export async function generateSeq(id: string): Promise<number> {
   const counterRepo = AppDataSource.getMongoRepository(Counters);
-  var result = await counterRepo.findOneAndUpdate({ id }, { $inc: { seq: 1 } }, { upsert: true });
+  var result = await counterRepo.findOneAndUpdate(
+    { id },
+    { $inc: { seq: 1 } },
+    { upsert: true }
+  );
   return result.value?.seq ? result.value?.seq + 1 : 1;
 }
