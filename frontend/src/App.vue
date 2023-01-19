@@ -28,7 +28,7 @@ export default defineComponent({
     const store = useAppStore();
 
     onMounted(() => {
-      // store.restoreLogin();
+      store.restoreLogin();
     });
 
     return {

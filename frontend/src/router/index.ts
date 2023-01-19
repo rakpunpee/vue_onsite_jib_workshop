@@ -7,6 +7,7 @@ import StockEdit from "@/views/StockEdit.vue";
 import Shop from "@/views/Shop.vue";
 import Transaction from "@/views/Transaction.vue";
 import Report from "@/views/Report.vue";
+import api from "@/services/api";
 
 const routes: Array<vueRouter.RouteRecordRaw> = [
   {
@@ -68,6 +69,27 @@ const routes: Array<vueRouter.RouteRecordRaw> = [
 const router = vueRouter.createRouter({
   history: vueRouter.createWebHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+// Router guard
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => (record.meta.isSecured ? true : false))) {
+    // secure route
+    if (api.isLoggedIn()) {
+      next();
+    } else {
+      next("/login");
+    }
+
+    // console.log("Debug: " + to.name?.toString())
+  } else {
+    // unsecure route
+    if (api.isLoggedIn()) {
+      router.push("/stock");
+    } else {
+      next();
+    }
+  }
 });
 
 export default router;

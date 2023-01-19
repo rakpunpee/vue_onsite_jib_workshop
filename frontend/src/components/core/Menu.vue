@@ -14,11 +14,8 @@
   >
     <img
       @click="toggleCollapse"
-      :class="collapsed ? 'p-2' : 'p-0'"
       :src="
-        collapsed
-          ? 'src/assets/pospos_logo.png'
-          : 'src/assets/05-banner-vuejs.png'
+        collapsed ? 'src/assets/jib_logo.png' : 'src/assets/05-banner-vuejs.png'
       "
       alt=""
       style="width: 100%"

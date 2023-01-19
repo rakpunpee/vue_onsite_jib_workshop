@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { Users } from "../entity/Users";
 import { savedValue } from "../utils/cm-util";
 import * as bcrypt from "bcryptjs";
+import jwt from "../utils/jwt";
 
 export class UserController {
   private userRepository = AppDataSource.getMongoRepository(Users);
@@ -20,7 +21,12 @@ export class UserController {
 
     if (doc) {
       let isPasswordValid = await bcrypt.compare(password, doc.password);
-      const token = "1234";
+      const payload = {
+        id: doc._id,
+        level: doc.level,
+        username: doc.username,
+      };
+      let token = jwt.sign(payload);
 
       if (isPasswordValid) {
         return { result: "ok", token, message: "success" };

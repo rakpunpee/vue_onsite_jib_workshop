@@ -57,7 +57,7 @@ module.exports = {
 
 ### window
 
-- set ROOT_PATH=/Users/chaiyasittayabovorn/Desktop/vue_nov_2022/rvpPOS/backend
+- setx ROOT_PATH /Users/chaiyasittayabovorn/Desktop/vue_nov_2022/rvpPOS/backend
 
 # docker
 

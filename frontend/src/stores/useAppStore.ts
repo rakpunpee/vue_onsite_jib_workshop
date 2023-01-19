@@ -7,6 +7,13 @@ export const useAppStore = defineStore("appStore", () => {
   const username = ref<string>("");
   const isLogged = ref<boolean>(false);
 
+  function restoreLogin() {
+    if (api.isLoggedIn() == true) {
+      isLogged.value = true;
+      username.value = localStorage.getItem(server.USERNAME) ?? "";
+    }
+  }
+
   async function login(user: any) {
     let result = await api.login(user);
     if (result == true) {
@@ -21,5 +28,5 @@ export const useAppStore = defineStore("appStore", () => {
     username.value = "";
   }
 
-  return { username, isLogged, login, logout };
+  return { username, isLogged, login, logout, restoreLogin };
 });

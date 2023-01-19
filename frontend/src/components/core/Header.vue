@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger, no-console */
 
 <template>
-  <a-layout-header style="background: #00a354">
+  <a-layout-header class="!pl-5 !pr-2 !bg-[#00a354]">
     <div style="display: flex; flex-direction: row; align-items: center">
       <menu-unfold-outlined
         v-if="collapsed"
@@ -31,7 +31,8 @@
   </a-layout-header>
 </template>
 <script lang="ts">
-import { useCounterStore } from "@/stores/useCounterStore";
+// import { useCounterStore } from "@/stores/useCounterStore";
+import { useAppStore } from "@/stores/useAppStore";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -48,14 +49,14 @@ export default defineComponent({
     LogoutOutlined,
   },
   setup(props, { emit }) {
-    const store = useCounterStore();
+    const store = useAppStore();
 
     function toggleCollapse() {
       emit("update:collapsed", !props.collapsed);
     }
 
     function onClickLogOff() {
-      // store.logout();
+      store.logout();
     }
 
     return {
